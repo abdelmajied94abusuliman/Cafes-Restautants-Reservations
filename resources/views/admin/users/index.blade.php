@@ -170,7 +170,7 @@
                                                 <th scope="col">{{$item->name}}</th>
                                                 <th scope="col">{{$item->email}}</th>
                                                 <th> User </th>
-                                                <th scope="col"><a href="{{route('admin.user.destroy' , ['user'=>$item->id])}}">Delete</a></th>
+                                                <th scope="col"><a href="{{route('admin.user.removeAdmin' , ['user'=>$item->id])}}">Delete</a></th>
                                                 <th scope="col"><a href="{{route('admin.user.update' , ['user'=>$item->id])}}">Make Admin</a></th>
                                             </tr>
                                         @endif

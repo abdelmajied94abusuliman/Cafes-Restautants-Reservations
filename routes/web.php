@@ -111,8 +111,8 @@ Route::middleware(['auth' , 'admin'])->name('admin.')->prefix('admin')->group(fu
     Route::get('/reservation/{reservation}' , [ReservationController::class , 'destroy'])->name('reservation-approve');
     Route::resource('/table' , TableController::class);
     Route::resource('/user' , UserController::class);
-    Route::get('/user/{user}' , [UserController::class , 'destroy'])->name('user-destroy');
-    Route::get('/user/{user}' , [UserController::class , 'update'])->name('user-update');
+    Route::get('/{user}/user' , [UserController::class , 'update'])->name('user.update');
+    Route::get('/user/{user}' , [UserController::class , 'removeAdmin'])->name('user.removeAdmin');
 });
 
 Route::post('/search' , [Search::class , 'search'])->name('search');

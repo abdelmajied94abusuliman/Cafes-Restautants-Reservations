@@ -38,8 +38,6 @@
         }
 
         .content {
-
-            margin-top: 3%;
             margin-left: 18%;
             width: 100%
         }
@@ -48,7 +46,7 @@
             background-color: rgb(230, 228, 228);
         }
 
-        .category {
+        .dashboard {
             color: black !important;
         }
 
@@ -88,7 +86,7 @@
         .category, .reservation, .admin, .user {
             background-color: none;
         }
-        .category {
+        .dashboard {
             background-color: rgb(230, 230, 230);
         }
     </style>

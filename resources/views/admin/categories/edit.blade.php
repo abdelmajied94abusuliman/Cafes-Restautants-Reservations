@@ -1,7 +1,5 @@
-{{-- {{use Symfony\Component\HttpFoundation\File\UploadedFile;}} --}}
-
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="height: 100%">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,6 +32,27 @@
     @vite(['resources/css/style.css', 'resources/css/bootstrap.min.css'])
 
     <style>
+        body {
+            background-color: rgb(230, 228, 228);
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        .content {
+            margin-top: 3%;
+            margin-left: 18%;
+            width: 100%
+        }
+
+        .container-fluid {
+            background-color: rgb(230, 228, 228);
+        }
+
+        .category {
+            color: black !important;
+        }
+
+
         .navbar {
             position: relative;
             display: flex;
@@ -66,16 +85,16 @@
         .bg-secondary {
             background-color: rgb(0, 0, 69) !important;
         }
-        .dashboard, .reservation, .admin, .user {
+        .category, .reservation, .admin, .user {
             background-color: none;
         }
-        .category{
-            background-color: silver;
+        .category {
+            background-color: rgb(230, 230, 230);
         }
     </style>
 </head>
 
-<body>
+<body style="height: 100%">
 
 
     @include('layouts.sidebar')
@@ -86,11 +105,11 @@
     <div class="content">
 
 
-        <h1>categories</h1>
+        <h1 style="color: black">Categories</h1>
         <div class="container pt-4 px-4" style="margin-bottom: 30px;">
         <div class="row g-4">
             <div class="col-12 offset-md-1">
-                <div class="bg-secondary rounded h-100 p-4" style="background-color: #fff !important; ">
+                <div class="bg-secondary rounded h-100 p-4" style="background-color: #fff !important; margin-bottom: 30px; margin-left:-125px; width : 70%">
                     <h5 class="mb-4">Edit Restaurant</h5>
                     <form action="{{ route('admin.category.update' , ['category'=>$cat['id']]) }}" method="post" enctype="multipart/form-data" files=true>
                         @csrf

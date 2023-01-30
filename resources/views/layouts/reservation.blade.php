@@ -59,6 +59,8 @@
 
 @endif
 
+<div style="height: 17%"></div>
+
 @include('layouts.footer')
 
     </body>

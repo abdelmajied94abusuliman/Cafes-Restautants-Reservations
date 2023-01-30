@@ -66,28 +66,28 @@
     <div class="col-sm-6 col-xl-6 border rounded " style="margin-top:5%">
             <h1 class="px-3 pt-3">Reservation</h1>
             <div class="bg-secondary  p-4" style="background-color: #fff !important; ">
-                <h5 class="mb-4">Add New reservation</h5>
+                <h5 class="mb-4">Add New Reservation</h5>
                 <form action="{{route('LandingPage.store')}}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label class="form-label">first name</label>
+                        <label class="form-label">First Name</label>
                         <input type="text" name="first_name" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">last name</label>
+                        <label class="form-label">Last Name</label>
                         <input type="text" name="last_name" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">email</label>
+                        <label class="form-label">Email</label>
                         <input type="text" name="email" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">tel_number</label>
+                        <label class="form-label">Mobile</label>
                         <input type="text" name="tel_number" class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label">guest_number</label>
+                        <label class="form-label">Guest Number</label>
                         <input type="number" name="guest_number" class="form-control">
                     </div>
                     <div class="mb-3">
@@ -133,9 +133,9 @@
                         <input type="hidden" name="user_id" class="form-control">
                         <input type="hidden" name="res_date" value="{{Session::get('Reservatio_DateAndTime')}}" class="form-control">
                     </div>
-                    <button type="submit" class="btn btn-primary">Add reservation</button>
+                    <button type="submit"style="background-color: #fd7e14 !important ;color:#fff" class="btn">Add reservation</button>
                 </form>
-                <a href="{{route('reseForm-create' , ['category_id'=>$categories['id']])}}"><button>Back To Date</button></a>
+                <a href="{{route('reseForm-create' , ['category_id'=>$categories['id']])}}"><button class="btn btn-primary">Back To Date</button></a>
                 </form>
             </div>
         </div>

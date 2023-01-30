@@ -3,7 +3,7 @@
 
 <br><br><br><br>
 
-
+<div style="display: flex">
 @foreach ($results as $result)
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
@@ -18,6 +18,6 @@
                         </div>
                     </div>
                     @endforeach
-
+</div>
   @include('layouts.footer')
 

@@ -93,7 +93,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($user)
+    // public function destroy($user)
+    // {
+    //     // return 'this is destroy';
+    //     user::destroy($user);
+    //     return redirect('admin/user');
+    // }
+    public function removeAdmin($user)
     {
         // return 'this is destroy';
         user::destroy($user);
