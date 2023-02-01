@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Session;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Category;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -28,8 +30,17 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        $check_Session = Session::get('Reservatio_last_name');
 
-        return redirect('/admin');
+        if ( $check_Session == ""){
+            return redirect('/admin');
+        } else {
+            $category_id = Session::get('Reservatio_category_id');
+            // $categories = Category::get()->where('id' , $category_id );
+            // , ['categories'=>$categories , ]
+            return redirect("/formPartTwo/$category_id/createPartTwo");
+        }
+
     }
 
     /**

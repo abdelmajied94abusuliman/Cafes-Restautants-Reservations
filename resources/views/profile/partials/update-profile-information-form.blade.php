@@ -34,7 +34,7 @@
         }
 
         .Name_Email{
-          margin-left:250px;
+          /* margin-left:250px; */
             font-size: 20px;
             text-align: center;
             color: aliceblue;
@@ -63,7 +63,7 @@
         }
 
         .buttsave:hover{
-            background-color: rgb(255, 72, 36);
+
             color:rgb(255, 255, 255);
             border-radius:50px;
         }
@@ -80,25 +80,67 @@
             padding:10px;
         }
 
+        #profile-img, #rese_link {
+            margin-left: 40px;
+        }
+
+        #btn-rese {
+            height: 45px;
+            padding: 10px;
+            background-color: rgb(224, 223, 223);
+        }
+        #btn-rese:hover {
+            background-color: rgb(116, 116, 116);
+            color: white;
+        }
+
     </style>
 
 <body>
     <div class="contanerr ">
      <section>
 
-         <header >
-                <div class="header1">
+         <header style="display: flex; justify-content: space-around" >
 
+            <div class="header1">
 
-                    <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                        {{ __('Profile Information ') }}
-                    </h2>
-                </div>
-            <div class="header2">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" id="profile-img">
+                <br>
+                <br>
+                 <a id="rese_link" href="{{route('yourreservation')}}"><button id="btn-rese">See Your Reservations</button></a>
+            </div>
+
+                <div>
+                    <p class="text-lg font-medium text-gray-900 dark:text-gray-100" style="font-size: 40px"> {{-- <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100"> --}}    {{ __('Profile Information ') }}
+                    {{-- </h2> --}} </p>
+
+            <div>
                     <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
                     {{ __("Update your account's profile information and email address.") }}
                    </p>
             </div>
+            <form method="post" action="{{ route('profile.update') }}">
+                @csrf
+                @method('patch')
+
+                  <div class="Name_Email">
+
+                      <div class="Name_Email1">
+                          <x-input-label  class="name" for="name" :value="__('Name')" />
+                          <x-text-input id="name" name="name" type="text" class="namee" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+                          <x-input-error class="mt-2" :messages="$errors->get('name')" />
+                      </div>
+
+                  <div class="Name_Email1">
+                      <x-input-label class="name" for="email" :value="__('Email')" />
+                      <x-text-input id="email" name="email" type="email" class="namee" :value="old('email', $user->email)" required autocomplete="email" />
+                      <x-input-error class="mt-2" :messages="$errors->get('email')" />
+                  </div>
+                              <x-primary-button class="buttsave">{{ __('Save') }}</x-primary-button>
+
+                  </div>
+                </div>
+
         </header>
 
 
@@ -106,26 +148,7 @@
             @csrf
         </form>
 
-        <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
-          @csrf
-          @method('patch')
 
-            <div class="Name_Email">
-
-                <div class="Name_Email1">
-                    <x-input-label  class="name" for="name" :value="__('Name')" />
-                    <x-text-input id="name" name="name" type="text" class="namee" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-                    <x-input-error class="mt-2" :messages="$errors->get('name')" />
-                </div>
-
-            <div class="Name_Email1">
-                <x-input-label class="name" for="email" :value="__('Email')" />
-                <x-text-input id="email" name="email" type="email" class="namee" :value="old('email', $user->email)" required autocomplete="email" />
-                <x-input-error class="mt-2" :messages="$errors->get('email')" />
-            </div>
-                        <x-primary-button class="buttsave">{{ __('Save') }}</x-primary-button>
-
-            </div>
 
                 <div>
                     @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())

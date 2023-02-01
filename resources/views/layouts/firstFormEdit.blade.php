@@ -22,7 +22,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
 
-        <a class="navbar-brand" href="#page-top"><img src="{{URL::asset('/storage/image/logo.png')}}" alt="..." width="400%" height="100rem" /></a>
+        <a class="navbar-brand" href="#page-top"><img src="{{URL::asset("storage/image/$data'[image]'")}}" alt="..." style="width:auto; height:75px" /></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
@@ -32,7 +32,6 @@
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
 
                 <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('yourreservation')}}">Reservation</a></li>
                 <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
                 <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
 
@@ -61,14 +60,14 @@
                 <img class="img-fluid rounded" src="{{URL::asset('/storage/image/img_res.png')}}" alt="..."    />
                 </div>
 
-                <div class="col-sm-6 col-xl-6 border rounded " style="margin-top:5%">
+                <div class="col-sm-6 col-xl-6 border rounded " style="margin-top:5%; padding:15px; width:750px">
 
                 <h1>Reservation</h1>
                 <div class="bg-secondary rounded p-4" style="background-color: #fff !important; ">
                     <h5 class="mb-4">Add New Reservation</h5>
                     <form action="{{route('editYourReservation' , ['reservation'=>$data['id']])}}" method="POST">
                         @csrf
-
+                        
                         <div class="mb-3">
                             <label class="form-label">Reservation Date</label>
                                 <input type="datetime-local" value="{{$data['res_date']}}" name="res_date" class="form-control">

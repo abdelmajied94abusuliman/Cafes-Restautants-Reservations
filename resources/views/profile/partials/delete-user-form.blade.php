@@ -48,13 +48,13 @@
         }
 
         .butt2:hover{
-            background-color:rgb(193, 0, 0)!important;
+            background-color:rgb(0, 182, 24)!important;
             border-radius:50px;
         }
         .buttdelet{
             font-size:18px;
             cursor: pointer;
-            background-color:rgb(0, 38, 128);
+            background-color: rgb(255, 72, 36);
 
         }
         .buttdelet:hover{

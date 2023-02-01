@@ -25,7 +25,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
 
-        <a class="navbar-brand" href="#page-top"><img src="{{URL::asset('/storage/image/logo.png')}}" alt="..." width="400%" height="100rem" /></a>
+        <a class="navbar-brand" href="#page-top"><img src="{{URL::asset('/storage/image/logo.png')}}" alt="..." style="width:auto; height:75px"  /></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
@@ -35,7 +35,6 @@
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
 
                 <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('yourreservation')}}">Reservation</a></li>
                 <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
                 <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
 
@@ -61,7 +60,7 @@
 <div class="container pt-5 px-4 mt-3">
     <div class="row">
         <div class="col-sm-6 mt-5" >
-            <img class="img-fluid rounded" src="{{URL::asset('/storage/image/img_res.png')}}" alt="..."    />
+            <img class="img-fluid rounded" src="{{URL::asset("storage/image/$data'[image]'")}}" alt="..."    />
             </div>
 
             <div class="col-sm-6 col-xl-6 border rounded " style="margin-top:5%">

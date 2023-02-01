@@ -58,28 +58,42 @@ class LandingPage extends Controller
     {
         // $xx = Carbon::parse();
         // dd($request->input('table_id'));
-        $reservation = new Reservation;
+        if (auth()->check()){
+            $reservation = new Reservation;
 
 
-        $reservation->first_name = $request->input('first_name');
-        $reservation->last_name = $request->input('last_name');
-        $reservation->email = $request->input('email');
-        $reservation->tel_number = $request->input('tel_number');
-        $reservation->res_date = $request->input('res_date');
-        $reservation->guest_number = $request->input('guest_number');
-        $reservation->category_id = $request->input('category_id');
-        $reservation->table_id = $request->input('table_id');
-        $reservation->user_id = $request->user()->id;
+            $reservation->first_name = $request->input('first_name');
+            $reservation->last_name = $request->input('last_name');
+            $reservation->email = $request->input('email');
+            $reservation->tel_number = $request->input('tel_number');
+            $reservation->res_date = $request->input('res_date');
+            $reservation->guest_number = $request->input('guest_number');
+            $reservation->category_id = $request->input('category_id');
+            $reservation->table_id = $request->input('table_id');
+            $reservation->user_id = $request->user()->id;
 
+            $reservation->save();
 
-        $reservation->save();
+            $user_reservation = Reservation::where('user_id' , $request->user()->id)->get();
+            return redirect('/yourreservation');
+        } else {
+            $first_name= $request->input('first_name');
+            $last_name = $request->input('last_name');
+            $email = $request->input('email');
+            $guest_number = $request->input('guest_number');
+            $tel_number = $request->input('tel_number');
+            $table_id = $request->input('table_id');
+            $category_id = $request->input('category_id');
+            Session::put('Reservatio_first_name' , $first_name);
+            Session::put('Reservatio_last_name' , $last_name);
+            Session::put('Reservatio_email' , $email);
+            Session::put('Reservatio_guest_number' , $guest_number);
+            Session::put('Reservatio_tel_number' , $tel_number);
+            Session::put('Reservatio_table_id' , $table_id);
+            Session::put('Reservatio_category_id' , $category_id);
+            return redirect('/login');
+        }
 
-        $user_reservation = Reservation::where('user_id' , $request->user()->id)->get();
-
-        // dd($user_reservation);
-
-        // return view('layouts.userReservation' , compact('reservation'));
-        return redirect('/yourreservation');
     }
 
     public function delete($reservation)
@@ -150,6 +164,14 @@ class LandingPage extends Controller
         $category_id = $request->input('category_id');
         Session::put('Reservatio_Date' , $x);
         Session::put('Reservatio_DateAndTime' , $y);
+        Session::put('Reservatio_first_name' , "");
+        Session::put('Reservatio_last_name' , "");
+        Session::put('Reservatio_email' ,"" );
+        Session::put('Reservatio_guest_number' ,"" );
+        Session::put('Reservatio_tel_number' ,"" );
+        Session::put('Reservatio_table_id' ,"" );
+        Session::put('Reservatio_table_id' ,"" );
+        Session::put('Reservatio_category_id' , "");
         // return $x;
         return redirect("/formPartTwo/$category_id/createPartTwo");
     }
